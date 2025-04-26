@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NowPlay.com - Privacy Policy</title>
+  
+  <style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+   body{
+     /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;*/
+      background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+   }
+   nav {
+    background-color: #111;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .logo {
+    font-size:30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color:red;
+    opacity: 0;  /* Initially hidden */
+    animation: logoFadeIn 2s forwards; /* Animation to show logo */
+  }
+
+  @keyframes logoFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size:23px;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    color: #e50914;
+  }
+
+  .policy-container {
+      background: black;
+      width: 90%;
+      max-width: 700px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 18px rgba(0,0,0,0.1);
+      margin-left: 23%;
+    }
+
+    h1 {
+      text-align: center;
+      color: red;
+    }
+
+    .policy-content {
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 20px 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      background-color:black;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button {
+      padding: 12px 18px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .agree-btn {
+      background-color: white;
+      color: black;
+      font-size: 20px;
+      padding: 10x 12px;
+    }
+    .agree-btn:hover{
+        background-color: lightgray;
+    }
+    .agree-btn:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .decline-btn {
+      background-color: #b02a37;
+      color: white;
+      font-size: 20px;
+      padding: 10px 12px;
+    }
+    .decline-btn:hover {
+      background-color: #a0202e;
+    }
+    footer {
+      background-color: #111;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer h4 {
+      margin-bottom: 10px;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    footer ul li {
+      margin: 5px 0;
+    }
+
+    footer ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer ul li a:hover {
+      color: #e50914;
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">NowPlay</div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          
+          <a href="sign.html">Sign Up</a>
+          <a href="signin.html">Sign In</a>
+        </div>
+      </nav>
+<!--<div class="nm">-->
+    <div class="policy-container">
+        <h1>Privacy Policy</h1>
+        <div class="policy-content" id="policyBox">
+          <p>Your privacy is important to us. This policy outlines how NowPlay collects, uses, and protects your information:</p>
+          <ul>
+            <li>We collect basic info like your name, email, and location for community engagement.</li>
+            <li>We use cookies to personalize your experience and improve the app's performance.</li>
+            <li>Your data is never sold to third parties without your consent.</li>
+            <li>Messages and media shared in Chaupal are encrypted and stored securely.</li>
+            <li>You can delete your data or account at any time via settings.</li>
+            <li>We may use anonymous usage data to improve features.</li>
+          </ul>
+          <p>By continuing, you consent to our data practices. This policy may be updated, and continued use signifies agreement.</p>
+          <p>Last Updated: April 2025</p>
+        </div>
+      
+        <label>
+          <input type="checkbox" id="privacyCheckbox">
+          I have read and agree to the Privacy Policy.
+        </label>
+      
+        <div class="button-group">
+          <button class="agree-btn" id="acceptPrivacyBtn" disabled>Accept</button>
+          <button class="decline-btn" onclick="declinePrivacy()">Decline</button>
+        </div>
+      </div>
+      
+
+<footer>
+    <h4>NowPlay - Entertainment at its Best</h4>
+    <ul>
+      <li><a href="term.html">Term Of Use</a></li>
+      <li><a href="policy.html">Privacy Policy</a></li>
+      <li><a href="help.html">Help!?</a></li>
+      </ul>
+    <p>&copy; 2025 NowPlay. All rights reserved.</p>
+  </footer>
+
+
+<script>
+    
+    const privacyCheckbox = document.getElementById("privacyCheckbox");
+  const acceptBtn = document.getElementById("acceptPrivacyBtn");
+
+  privacyCheckbox.addEventListener('change', () => {
+    acceptBtn.disabled = !privacyCheckbox.checked;
+  });
+
+  acceptBtn.addEventListener('click', () => {
+    alert("Privacy Policy accepted. Redirecting...");
+    window.location.href = "index.html"; // Change this to your next screen
+  });
+
+  function declinePrivacy() {
+    alert("You must accept the privacy policy to use Chaupal. Returning to home...");
+    window.location.href = "index.html"; // Optional fallback
+  }
+</script>
+
+</body>
+</html>

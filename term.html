@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NowPlay.com - Terms of Use</title>
+  
+  <style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+   body{
+     /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;*/
+      background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+   }
+   nav {
+    background-color: #111;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .logo {
+    font-size:30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color:red;
+    opacity: 0;  /* Initially hidden */
+    animation: logoFadeIn 2s forwards; /* Animation to show logo */
+  }
+
+  @keyframes logoFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size:23px;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    color: #e50914;
+  }
+
+    .container {
+      background: black;
+      width: 90%;
+      max-width: 700px;
+      margin-left: 23%;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: red;
+    }
+
+    .terms-box {
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 20px 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      background-color:black;
+      color: white;
+    }
+    label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .agree-btn {
+      background-color: white;
+      color: black;
+      font-size: 20px;
+      padding: 10x 12px;
+    }
+    .agree-btn:hover{
+        background-color: lightgray;
+    }
+    .agree-btn:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .decline-btn {
+      background-color: #b02a37;
+      color: white;
+      font-size: 20px;
+      padding: 10px 12px;
+    }
+    .decline-btn:hover {
+      background-color: #a0202e;
+    }
+    footer {
+      background-color: #111;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer h4 {
+      margin-bottom: 10px;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    footer ul li {
+      margin: 5px 0;
+    }
+
+    footer ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer ul li a:hover {
+      color: #e50914;
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">NowPlay</div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          
+          <a href="sign.html">Sign Up</a>
+          <a href="signin.html">Sign In</a>
+        </div>
+      </nav>
+<!--<div class="nm">-->
+ <div class="container">
+  <h1>Terms of Use</h1>
+  <div class="terms-box" id="termsBox">
+    <p>Welcome to NowPlay!</p>
+    <p>By using this application, you agree to comply with the following terms and conditions:</p>
+    <ul>
+      <li>No offensive, illegal, or harmful content is allowed.</li>
+      <li>Respect other users and maintain a civil tone.</li>
+      <li>Content shared must not infringe on intellectual property rights.</li>
+      <li>We reserve the right to suspend accounts that violate these rules.</li>
+      <li>Your data will be handled according to our Privacy Policy.</li>
+      <li>This platform is meant to encourage healthy discussions in your community.</li>
+    </ul>
+    <p>These terms may change at any time. Continued use of the app constitutes acceptance of any updates.</p>
+    <p>Last updated: April 2025</p>
+  </div>
+  <label>
+    <input type="checkbox" id="acceptCheckbox">
+    I have read and agree to the Terms of Use.
+  </label>
+
+  <div class="buttons">
+    <button class="agree-btn" id="agreeBtn" disabled>I Agree</button>
+    <button class="decline-btn" onclick="declineTerms()">Decline</button>
+  </div>
+</div>
+
+
+
+<footer>
+    <h4>NowPlay - Entertainment at its Best</h4>
+    <ul>
+      <li><a href="term.html">Term Of Use</a></li>
+      <li><a href="policy.html">Privacy Policy</a></li>
+      <li><a href="help.html">Help!?</a></li>
+      </ul>
+    <p>&copy; 2025 NowPlay. All rights reserved.</p>
+  </footer>
+
+
+<script>
+    
+        const checkbox = document.getElementById("acceptCheckbox");
+        const agreeBtn = document.getElementById("agreeBtn");
+
+checkbox.addEventListener('change', () => {
+  agreeBtn.disabled = !checkbox.checked;
+});
+
+agreeBtn.addEventListener('click', () => {
+  alert("Thanks for agreeing to the terms! Redirecting to app...");
+  // Simulate redirect - you can change this to your actual app's homepage
+  window.location.href = "index.html"; // <- Replace with real page
+});
+function declineTerms() {
+      alert("You must accept the terms to use the app. Exiting...");
+      window.close(); // May not work in all browsers; can redirect instead
+    }
+</script>
+
+</body>
+</html>

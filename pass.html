@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChaupalTV - Password Help</title>
+  <style>
+   * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  body {
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    padding: 14px 16px;
+  }
+  nav {
+    background-color: #111;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .logo {
+    font-size:30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color:red;
+    opacity: 0;  /* Initially hidden */
+    animation: logoFadeIn 2s forwards; /* Animation to show logo */
+  }
+
+  @keyframes logoFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size:20px;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    color: #e50914;
+  }
+  .new{
+  background-image: url('back.jpg');
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300%;
+  padding: 12px 14px;
+}
+
+    .container {
+      max-width: 500px;
+      margin: 60px auto;
+      background:black;
+      
+      padding: 30px 40px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.05);
+      border-radius: 10px;
+    }
+
+    h2 {
+      text-align: center;
+      color: red;
+    }
+    form{
+        opacity: 0.7;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+        text-align: center;
+      padding: 10px 20px;
+      cursor: pointer;
+      background:black;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 20px;
+      color: white;
+      border-radius: 6px 6px 0 0;
+      margin-right: 5px;
+      border-bottom:  2px solid transparent;;
+    }
+    /*.tab:hover{
+        background-color:red;
+    }*/
+    .tab.active:hover{
+  color: red;
+}
+.tab:hover{
+  color: red;
+}
+
+    .tab.active {
+      background: black;
+      color: white;
+      font-weight: bold;
+      border-bottom: 2px solid white;
+    }
+
+    .form-section {
+      display: none;
+    }
+
+    .form-section.active {
+      display: block;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      color:white;
+    }
+
+    input[type="password"],
+    input[type="email"],
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      background: white;
+      color: black;
+      padding: 12px 16px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 20px;
+      opacity: 1;
+    }
+    button:hover{
+        background-color: lightgrey;
+    }
+    .message {
+      margin-top: 15px;
+      color: green;
+      text-align: center;
+    }
+    footer {
+      background-color: #111;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer h4 {
+      margin-bottom: 10px;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    footer ul li {
+      margin: 5px 0;
+    }
+
+    footer ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer ul li a:hover {
+      color: #e50914;
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">NowPlay</div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="sign.html">Sign Up</a>
+          <a href="signin.html">Sign In</a>
+        </div>
+      </nav>
+<div class="new">
+<div class="container">
+  <h2>Password Assistance</h2>
+
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('change')">Change Password</div>
+    <div class="tab" onclick="switchTab('forgot')">Forgot Password</div>
+  </div>
+
+  <!-- Change Password -->
+  <div id="change" class="form-section active">
+    <form onsubmit="return handleChangePassword(event)">
+      <label for="currentPwd">Current Password</label>
+      <input type="password" id="currentPwd" required placeholder="Enter your current password..">
+
+      <label for="newPwd">New Password</label>
+      <input type="password" id="newPwd" required placeholder="Enter your new password..">
+
+      <label for="confirmPwd">Confirm New Password</label>
+      <input type="password" id="confirmPwd" required placeholder="Confirm your new password..">
+      
+      <button type="submit">Change Password</button>
+      
+    </form>
+    <div class="message" id="changeMsg"></div>
+  </div>
+
+  <!-- Forgot Password -->
+  <div id="forgot" class="form-section">
+    <form onsubmit="return handleForgotPassword(event)">
+      <label for="userEmail">Email or Mobile Number</label>
+      <input type="text" id="userEmail" required placeholder="mann@gmail.com or 1987......">
+
+      <button type="submit">Send OTP</button>
+    </form>
+    <div class="message" id="forgotMsg"></div>
+  </div>
+</div>
+
+</div>
+<footer>
+    <h4>NowPlay - Entertainment at its Best</h4>
+    
+      <ul>
+        <li><a href="term.html">Term Of Use</a></li>
+        <li><a href="policy.html">Privacy Policy</a></li>
+        <li><a href="help.html">Help!?</a></li>
+        </ul>
+    <p>&copy; 2025 NowPlay. All rights reserved.</p>
+</footer>
+
+<script>
+  function switchTab(tabId) {
+    document.querySelectorAll('.form-section').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+
+    document.getElementById(tabId).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  function handleChangePassword(event) {
+    event.preventDefault();
+    const current = document.getElementById("currentPwd").value;
+    const newPwd = document.getElementById("newPwd").value;
+    const confirm = document.getElementById("confirmPwd").value;
+
+    if (newPwd !== confirm) {
+      alert("New passwords do not match!");
+      return false;
+    }
+
+    // Simulate API call
+    document.getElementById("changeMsg").textContent = "Password successfully changed!";
+    return false;
+  }
+
+  function handleForgotPassword(event) {
+    event.preventDefault();
+    const user = document.getElementById("userEmail").value;
+
+    // Simulate OTP API call
+    document.getElementById("forgotMsg").textContent = `OTP sent to ${user}`;
+    return false;
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Out from All Devices - NowPlay.com</title>
+  <style>
+   * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  body {
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    padding: 14px 16px;
+  }
+  nav {
+    background-color: #111;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .logo {
+    font-size:30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color:red;
+    opacity: 0;  /* Initially hidden */
+    animation: logoFadeIn 2s forwards; /* Animation to show logo */
+  }
+
+  @keyframes logoFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size:20px;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    color: #e50914;
+  }
+
+  .container {
+      max-width: 500px;
+      margin: 80px auto;
+      background: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.07);
+    }
+
+    h2 {
+      color: red;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    p {
+      color: black;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .step {
+      margin: 20px 0;
+      padding-left: 20px;
+      border-left: 4px solid red;
+      /*background-color: #000;*/
+      color: black;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 500;
+      color: black;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: black;
+      color: white;
+      padding: 12px;
+      margin-top: 25px;
+      width: 100%;
+      border: none;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #474747;
+    }
+
+    .info {
+      margin-top: 15px;
+      color: white;
+      font-weight: 500;
+    }
+    footer {
+      background-color: #111;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer h4 {
+      margin-bottom: 10px;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    footer ul li {
+      margin: 5px 0;
+    }
+
+    footer ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer ul li a:hover {
+      color: #e50914;
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">NowPlay</div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="sign.html">Sign Up</a>
+          <a href="signin.html">Sign In</a>
+        </div>
+      </nav>
+      <div class="container">
+        <h2>Sign Out from All Devices</h2>
+        <p>To protect your account, you can log out from all devices that are currently signed in with your account.</p>
+      
+        <form onsubmit="return signOutAll(event)">
+          <label for="confirmPassword">Enter Your Password to Confirm</label>
+          <input type="password" id="confirmPassword" required placeholder="********">
+      
+          <button type="submit">Sign Out from All Devices</button>
+        </form>
+      
+        <div class="info" id="logoutMessage"></div>
+      </div>
+<footer>
+    <h4>NowPlay - Entertainment at its Best</h4>
+    <ul>
+      <li><a href="term.html">Term Of Use</a></li>
+      <li><a href="policy.html">Privacy Policy</a></li>
+      <li><a href="help.html">Help!?</a></li>
+      </ul>
+    <p>&copy; 2025 NowPlay. All rights reserved.</p>
+  </footer>
+<script>
+  function submitCode() {
+    const code = document.getElementById("tvCode").value;
+    if (code.length !== 6) {
+      document.getElementById("infoMsg").textContent = "Please enter a valid 6-digit code.";
+      return;
+    }
+
+    // Simulate Java backend call
+    document.getElementById("infoMsg").textContent = `✅ TV activated successfully using code ${code}`;
+  }
+
+  function resendCode() {
+    // Simulate code refresh
+    document.getElementById("infoMsg").textContent = "🔄 A new code has been sent to your TV.";
+  }
+</script>
+
+</body>
+</html>

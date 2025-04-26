@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mittran Da Challeya Truck Ni:NowPlay.com</title>
+  
+  <style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  body {
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  /* Navbar Styles */
+  nav {
+    background-color: #111;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .logo {
+    font-size:30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color:red;
+    opacity: 0;  /* Initially hidden */
+    animation: logoFadeIn 2s forwards; /* Animation to show logo */
+  }
+
+  @keyframes logoFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size:20px;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    color: #e50914;
+  }
+
+  .language-dropdown {
+    position: relative;
+  }
+
+  .language-dropdown button {
+    background-color: #222;
+    color: white;
+    border: 1px solid #444;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .language-dropdown button:hover {
+    background-color: #e50914;
+  }
+
+  .language-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #111;
+    min-width: 160px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .language-dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+  }
+
+  .language-dropdown-content a:hover {
+    background-color: #e50914;
+  }
+
+  .language-dropdown:hover .language-dropdown-content {
+    display: block;
+  }
+
+  .auth-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  .auth-buttons button {
+    background: #e50914;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+
+  .auth-buttons button:hover {
+    background: #ff1f2b;
+  }
+
+  header {
+    position: relative;
+    height: 90vh;
+    overflow: hidden;
+  }
+
+  header video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%);
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  /*  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);*/
+  }
+
+  .movie-info {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-left: 0%;
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  }
+
+  .movie-info h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  
+  }
+
+  .movie-info p {
+    font-size:20px;
+    line-height: 1.5;
+
+  }
+
+  .details {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+    font-size: 15px;
+    color: #ccc;
+    margin-left: 1%;
+    text-align: left;
+  }
+
+  
+  .button-group {
+    margin-top: 10px;
+  }
+  
+  .button-group button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ff4d4d;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .button-group button:hover {
+    background-color: #ff1a1a;
+  }
+  
+  button.sign-in-button {
+    background: white;
+    color: black;
+    padding: 10px 25px;
+    font-size:19px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    margin-top: 1%;
+  
+    z-index: 3; /* Ensure button is above overlay */
+  }
+  
+  button.sign-in-button:hover {
+    background:gray;
+  }
+
+.more-details-button {
+    background-color: #fff;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+  }
+  .more-details-button:hover {
+    background-color: #e50914;
+    color: #fff;
+  }
+
+  .audio-toggle {
+    position: absolute;
+    bottom: 20px;
+    left: 94%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid white;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+  }
+  .audio-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+ .movie-section {
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .movie-card {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .movie-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .movie-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .movie-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    .movie-card .movie-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      text-align: center;
+      font-size: 1.2rem;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #111;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+
+    .modal-content h2 {
+      margin-bottom: 15px;
+      color: #e50914;
+    }
+
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 4px;
+      border: 1px solid #444;
+      background-color: #222;
+      color: white;
+    }
+
+    .modal-content button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background: #e50914;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-btn {
+      text-align: right;
+      margin-top: -20px;
+      margin-bottom: 10px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: #111;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer h4 {
+      margin-bottom: 10px;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    footer ul li {
+      margin: 5px 0;
+    }
+
+    footer ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer ul li a:hover {
+      color: #e50914;
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+    }
+    /*body {
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: 'Roboto', sans-serif;
+    }*/
+
+    header {
+      position: relative;
+      height: 90vh;
+      overflow: hidden;
+    }
+
+    header video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(60%);
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 20px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    }
+    .movie-info {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-left: 0%;
+    text-align: left;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  }
+
+  .movie-info h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  
+  }
+
+  .movie-info p {
+    font-size:20px;
+    line-height: 1.5;
+
+  }
+
+  .details {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+    font-size: 15px;
+    color: #ccc;
+    margin-left: 1%;
+    text-align: left;
+  }
+  .par{
+    /*padding: 2px 2px;*/
+    width: 85%;
+
+  }
+  
+  .movie-section {
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.movie-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #111;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.movie-hover video {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #333;
+}
+
+.movie-hover .hover-info {
+  padding: 15px;
+  background-color: #111;
+}
+
+.movie-hover h3 {
+  color: #e50914;
+  margin-bottom: 8px;
+}
+
+.movie-hover p {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.movie-hover button {
+  padding: 8px 15px;
+  font-size: 14px;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.movie-hover button:hover {
+  background-color: gray;
+}
+
+.movie-card:hover .movie-hover {
+  display: flex;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+.new h1{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    margin-left: 2%;
+    margin-top: 4%;
+    
+  }
+  .text{
+    margin-left: 1%;
+  }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">NowPlay</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="series.html">Series</a>
+      <a href="sign.html">Sign Up</a>
+      <a href="signin.html">Sign In</a>
+    </div>
+  </nav>
+  <div class="modal" id="authModal">
+    <div class="modal-content">
+      <div class="close-btn" onclick="closeModal()">✖</div>
+      <h2>Sign In / Sign Up</h2>
+      <input type="text" placeholder="Email or Phone" />
+      <input type="password" placeholder="Password" />
+      <button>Continue</button>
+    </div>
+    </div>
+  <header>
+    <video id="headerVideo" autoplay loop playsinline>
+      <source src="Mittran Da Challeya Truck Ni (Trailer)｜ Amrinder Gill ｜ Sunanda Sharma｜ Sayani Gupta ｜On CHAUPAL Now.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="overlay">
+      <img src="mit.png" alt="Fikar Poster" style="width: 300px; border-radius: 10px; margin-top: 20px;">
+      <div class="movie-info">
+      
+        <div class="details">
+          <span>Duration: 2h 24min</span>
+          <span>Genre: Comedy, Romantic</span>
+          <span>Release Year: 2024</span>
+        </div>
+        <div class="par">
+        <p>Satta, a truck driver, wants an organized life, while Jindi craves wealth. Their clash sparks a fun, unexpected journey of love!
+        </p></div>
+      </div><br>
+      <div class="button-container">
+        <button class="sign-in-button" onclick="openModal()">Sign In to Watch</button>
+        <button class="more-details-button" onclick="playTrailer()">Watch Trailer</button>
+
+      </div>
+      <div class="audio-toggle">
+        
+        <button class="audio-toggle-btn" id="audioToggleBtn">▐▐</button>
+      </div><br>
+      </div>
+     
+    
+  </header>
+  <div class="text">
+       <p>Cast<b style="word-space:2em">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>        Amrinder Gill, Sunanda Sharma, Sayani Gupta, Hardeep Gill,Sayaji Shinde, Jarnail Singh, Sukhi Chahal, Deedar Gill</p><br>
+      <p>Director<b style="word-space:2em">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>   Rakesh Dhawan</p><br>
+      <p>Writer<b style="word-space:2em">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>      Rakesh Dhawan</p><br>
+      <p>Mood<b style="word-space:2em">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>        Sad, Happy, Funny, Emotional</p><br>
+  </div> 
+  <section class="new">
+    <h1>More Like This:</h1>
+      <section class="movie-section">
+        <!-- Movie Card 1 -->
+        <div class="movie-card">
+          <img src="mex.jpg" alt="Movie 1 Poster">
+          <div class="movie-hover">
+            <video src="Aaja Mexico Challiye  Official Trailer  Ammy Virk  Thind Motion Films  Releasing 25th Feb 2022 - Ammy Virk (720p, h264).mp4" muted loop></video>
+            <div class="hover-info">
+              <h3>AAJA MEXICO CHALLIYE</h3>
+              <p>Aaja Mexico Challiye is an Indian Punjabi film directed by Rakesh Dhawan and starring Ammy Virk, Nasir Chinyoti, and Yasaman Mohsani. The movie depicts how a man uses illegal methods to go abroad and </p>
+              <button onclick="goToMoviePage('mex.html')">More Details</button>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Movie Card 2 -->
+        <div class="movie-card">
+          <img src="le.jpg" alt="Movie 2 Poster">
+          <div class="movie-hover">
+            <video src="LEKH (Official Trailer) ਲੇਖ਼  Gurnam Bhullar  Tania  Jagdeep Sidhu  Punjabi Movie - Ishtar Punjabi (720p, h264).mp4" muted loop></video>
+            <div class="hover-info">
+              <h3>LEKH</h3>
+              <p>Lekh is an Indian Punjabi language romantic film starring Gurnam Bhullar and Tania in lead roles. The movie is Directed by Manvir Brar and is written by Qismat fame writer-director, Jagdeep Sidhu.</p>
+              <button onclick="goToMoviePage('lekh.html')">More Details</button>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Movie Card 3 -->
+        <div class="movie-card">
+          <img src="bapu.webp" alt="Movie 3 Poster">
+          <div class="movie-hover">
+            <video src="main te bapu.mp4" muted loop></video>
+            <div class="hover-info">
+              <h3>MAIN TE BAPU</h3>
+              <p>Main Te Bapu is a Punjabi movie that revolves around Lalli's widowed father and girlfriend Mahi. To get married Laali needs to to move to Canada. Having to choose between them he hatches the idea of getting his father married and things start to get interesting.</p>
+              <button onclick="goToMoviePage('bapu.html')">More Details</button>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Movie Card 4 -->
+        <div class="movie-card">
+          <img src="sh.webp" alt="Movie 4 Poster">
+          <div class="movie-hover">
+            <video src="Shukrana (Official Trailer)  Amrit Maan  Neeru Bajwa  Jass Bajwa  New Punjabi Movie 2024 - Times Music (720p, h264).mp4" muted loop></video>
+            <div class="hover-info">
+              <h3>SHUKRANA</h3>
+              <p>After Jeona’s sudden death, his wife Veeran must face life as a single mother, carrying their unborn baby while dealing with society’s judgments.</p>
+              <button onclick="goToMoviePage('shu.html')">More Details</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      </section>
+    
+  <footer>
+    <h4>NowPlay - Entertainment at its Best</h4>
+    <ul>
+      <li><a href="term.html">Term Of Use</a></li>
+      <li><a href="policy.html">Privacy Policy</a></li>
+      <li><a href="help.html">Help!?</a></li>
+      </ul>
+    <p>&copy; 2025 Chaupal. All rights reserved.</p>
+  </footer>
+  <script>
+
+    function openModal() {
+      document.getElementById('authModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('authModal').style.display = 'none';
+    }
+
+    function goToMoviePage(page) {
+      window.location.href = page;
+    }
+    const video = document.getElementById('headerVideo');
+  const toggleBtn = document.getElementById('audioToggleBtn');
+
+  // Try to play with audio first
+  window.addEventListener('DOMContentLoaded', () => {
+    video.muted = false;
+    video.play().catch(() => {
+      // If not allowed, fallback to muted
+      video.muted = true;
+      video.play();
+      toggleBtn.textContent = '▶ ';
+    });
+  });
+
+  // Toggle mute/unmute on button click
+  toggleBtn.addEventListener('click', () => {
+    video.muted = !video.muted;
+    toggleBtn.textContent = video.muted ? '▶' : '▐▐ ';
+  });
+  function playTrailer() {
+      const video = document.getElementById('headerVideo');
+      video.muted = false;
+      video.play();
+
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      } else if (video.msRequestFullscreen) {
+        video.msRequestFullscreen();
+      }
+    }
+
+
+    // Auto-play preview on hover
+document.querySelectorAll('.movie-card').forEach(card => {
+  const video = card.querySelector('video');
+  card.addEventListener('mouseenter', () => {
+    video.play();
+  });
+  card.addEventListener('mouseleave', () => {
+    video.pause();
+    video.currentTime = 0;
+  });
+});
+
+function goToMoviePage(page) {
+  window.location.href = page;
+}
+
+// Autoplay video on hover
+document.querySelectorAll('.movie-card').forEach(card => {
+  const video = card.querySelector('video');
+  card.addEventListener('mouseenter', () => {
+    video.play();
+  });
+  card.addEventListener('mouseleave', () => {
+    video.pause();
+    video.currentTime = 0;
+  });
+});
+
+ 
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NowPlay Help Desk</title>
+  <style>
+     * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+   body{
+    
+      background-color: #000;
+    color: #fff;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+   }
+    /*body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fefcf8;
+      color: #333;
+    }*/
+
+    header {
+      background-color: black;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+    background-color: #111;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .logo {
+    font-size:30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color:red;
+    opacity: 0;  /* Initially hidden */
+    animation: logoFadeIn 2s forwards; /* Animation to show logo */
+  }
+
+  @keyframes logoFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size:23px;
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover {
+    color: #e50914;
+  }
+
+
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.05);
+      margin-top: 3%;
+      margin-bottom: 3%;
+    }
+
+    h2 {
+      color:red ;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .support-info {
+      background-color: #1a2020;
+      padding: 20px;
+      border-left: 5px solid red;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .support-info p {
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+
+    .quick-links, .articles {
+      margin-top: 20px;
+    }
+
+    .quick-links a,
+    .articles a {
+      display: inline-block;
+      padding: 10px 12px;
+      margin: 5px;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+      color: #333;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .search-box {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .search-box input {
+      width: 70%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+  .quick-links a:hover{
+    background-color: red;
+    color: white
+  }
+    /*.submit-ticket {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .submit-ticket button {
+      background-color: #007a5e;
+      color: white;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }*/
+
+    footer {
+      background-color: #111;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer h4 {
+      margin-bottom: 10px;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    footer ul li {
+      margin: 5px 0;
+    }
+
+    footer ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer ul li a:hover {
+      color: #e50914;
+    }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Welcome to NowPlay Help Desk</h1>
+  <p>Facing an issue while using CHAUPAL? We’re here to help!</p>
+</header>
+
+<nav>
+  <div class="logo">NowPlay</div>
+  <div class="nav-links">
+  <a href="#">Home</a>
+  <a href="#">Sign In</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="support-info">
+    <h2>Reach Out to Our Team</h2>
+    <p>📞 Call us: <strong>+91 977977 3084</strong></p>
+    <p>💬 WhatsApp us for quick help</p>
+  </div>
+
+  <div class="search-box">
+    <input type="text" placeholder="Search articles...">
+  </div>
+
+  <div class="quick-links">
+    <h2>Quick Links</h2>
+    <a href="pass.html">Change Your Password</a>
+    <a href="pass.html">Forgot Password</a>
+   
+    <a href="tv.html">How to Sign in to NowPlay on your TV through phone</a>
+    <a href="signout.html">Sign out from all your devices</a>
+  </div>
+  </div>
+
+  <!--<div class="articles">
+    <h2>Popular Articles</h2>
+    <a href="#">How to Sign in to CHAUPAL on your TV through phone</a>
+    <a href="#">Pay us Direct Via GPay / PhonePe</a>
+    <a href="#">Request a Web Series or Movie</a>
+    <a href="#">Sign out from all your devices</a>
+  </div>
+
+  <div class="articles">
+    <h2>Recent Articles</h2>
+    <a href="#">JioSaavn Pro X CHAUPAL</a>
+    <a href="#">How to install CHAUPAL on Mi TV?</a>
+    <a href="#">Install CHAUPAL on Android Phone</a>
+  </div>
+
+  <div class="submit-ticket">
+    <h2>Still need help?</h2>
+    <button onclick="submitTicket()">Submit a Ticket</button>
+  </div>
+</div>-->
+
+<footer>
+  <h4>NowPlay - Entertainment at its Best</h4>
+  <ul>
+    <li><a href="term.html">Term Of Use</a></li>
+    <li><a href="policy.html">Privacy Policy</a></li>
+    <li><a href="help.html">Help!?</a></li>
+    
+    
+  </ul>
+  <p>&copy; 2025 NowPlay. All rights reserved.</p>
+</footer>
+
+<!-- Optional JS Logic -->
+<script>
+  function submitTicket() {
+    alert("Redirecting to support ticket form...");
+    // Simulate redirect
+    window.location.href = "https://yourticketform.com"; // replace with your form link
+  }
+</script>
+
+<!-- Chat widget placeholder -->
+<!-- Replace with Zoho Desk, Intercom, Tawk.to, etc. -->
+<script>
+  // Placeholder for future chat widget
+  console.log("Chat widget loaded (simulate)");
+</script>
+
+</body>
+</html>
